@@ -45,7 +45,7 @@ const gameState = ref<GameState>({
 
 /* remember the timeout id for the checkForMatch function, so we can 
  * cancel pending timeouts */
-const timeoutId = ref(0)
+const timeoutId = ref<ReturnType<typeof setTimeout> | null>(null)
 
 /* for poor man's responsive design */
 const windowSize = useWindowSize()
@@ -144,7 +144,7 @@ const styles = computed(() => {
     <div class="flex flex-col grow h-1 items-center justify-center p-3">
         <template v-if="gameState.runState == RunState.STARTED">
             <div class="grow shrink h-1 grid gap-6" :style="styles">
-                <GameCard v-for="(card,i) in gameState.cards" :card="card" :handleFlip="handleFlip(i)" />
+                <GameCard v-for="(card,i) in gameState.cards" :key="i" :card="card" :handleFlip="handleFlip(i)" />
             </div>
         </template>
         <template v-else>

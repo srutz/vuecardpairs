@@ -2,7 +2,6 @@
 import { ref } from "vue"
 import GamePanel from "./components/GamePanel.vue"
 import ModalDialog from "./components/ModalDialog.vue"
-import Menubar from "./components/Menubar.vue"
 
 const gameSize = ref<{ size: number, key: number }>({
     size: 4,
@@ -30,7 +29,7 @@ const onMenuAction = (action: string) => {
 
 <template>
     <div class="grow flex flex-col h-1">
-        <Menubar :handleClick="onMenuAction" />
+        <MenuBar  :handleClick="onMenuAction" />
         <div class="flex flex-col grow h-1 justify-center items-center bg-indigo-400 relative">
             <GamePanel :key="gameSize.key" :gameSize="gameSize.size"></GamePanel>
         </div>
