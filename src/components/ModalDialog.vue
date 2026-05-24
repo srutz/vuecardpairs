@@ -17,7 +17,7 @@
     >
       <div class="flex justify-between items-center p-4 border-b">
         <h2 class="text-lg font-semibold">{{ title }}</h2>
-        <button @click="onClose()" class="text-gray-500 hover:text-gray-800">
+        <button class="text-gray-500 hover:text-gray-800" @click="onClose()">
           &times;
         </button>
       </div>
@@ -25,7 +25,7 @@
         <slot></slot>
       </div>
       <div class="flex justify-end p-4 border-t">
-        <button @click="onClose()" class="button">Close</button>
+        <button class="button" @click="onClose()">Close</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, CSSProperties, ref } from "vue";
+import { computed, ref, type CSSProperties } from "vue";
 import { useWindowSize } from "../composables/WindowSize";
-import { Card, GameState, RunState } from "../GameTypes";
+import { RunState, type Card, type GameState } from "../GameTypes";
 import { Util } from "../Util";
 import GameCard from "./GameCard.vue";
 import GameStats from "./GameStats.vue";
@@ -43,7 +43,7 @@ const gameState = ref<GameState>({
 
 /* remember the timeout id for the checkForMatch function, so we can
  * cancel pending timeouts */
-const timeoutId = ref(0);
+const timeoutId = ref<ReturnType<typeof setTimeout> | null>(null);
 
 /* for poor man's responsive design */
 const windowSize = useWindowSize();
@@ -152,8 +152,9 @@ const styles = computed(() => {
       <div class="grow shrink h-1 grid gap-6" :style="styles">
         <GameCard
           v-for="(card, i) in gameState.cards"
+          :key="card.id"
           :card="card"
-          :handleFlip="handleFlip(i)"
+          :handle-flip="handleFlip(i)"
         />
       </div>
     </template>
@@ -163,7 +164,7 @@ const styles = computed(() => {
       </button>
     </template>
     <GameStats
-      :badMisses="gameState.badMisses"
+      :bad-misses="gameState.badMisses"
       :moves="gameState.moves"
       :misses="gameState.misses"
     ></GameStats>
