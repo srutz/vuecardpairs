@@ -160,7 +160,7 @@ const styles = computed(() => {
     </template>
     <template v-else>
       <button class="button" @click="newGame()">
-        Start new {{ gameSize }} x {{ gameSize }} Game
+        Start a new {{ gameSize }} x {{ gameSize }} Game
       </button>
     </template>
     <GameStats
