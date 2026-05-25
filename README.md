@@ -21,6 +21,6 @@ npm run dev
 
 Go to [https://srutz.github.io/vuecardpairs/](https://srutz.github.io/vuecardpairs/)
 
-(auto-deployed via Github Actions)
+(auto-deployed via Github Actions, yuck)
 
 
